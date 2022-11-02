@@ -25,8 +25,8 @@ function getMemberByName(name) {
 }
 
 async function fetcher(url) {
-  const resolve = await fetch(url);
-  return resolve.json;
+  const response = await fetch(url);
+  return response.json();
 }
 
 export default coachies;

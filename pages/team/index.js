@@ -1,16 +1,17 @@
 import Link from 'next/link';
 import useSWR from 'swr';
-import { getAllTeamMembers } from '../../util/helpers';
+import { fetcher, getAllTeamMembers } from '../../util/helpers';
+
+// function fakeFetcher() {
+//   return getAllTeamMembers();
+// }
 
 export default function Team() {
-  function fakeFetcher() {
-    return getAllTeamMembers();
-  }
-
-  const { data, error } = useSWR('/team', fakeFetcher);
+  const { data, error } = useSWR('/api/team', fetcher);
   const coachies = data;
 
   if (error) {
+    console.error(error)
     return (
       <>
         <h1>Team content here</h1>

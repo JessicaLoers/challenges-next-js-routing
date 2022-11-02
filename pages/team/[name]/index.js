@@ -12,21 +12,17 @@ export default function MemberDetail() {
 
   // const member = getMemberByName(name);
 
-  const { data: member, error } = useSWR(`/team/name/${name}`, fakeFetcher);
+  const { data: member, error } = useSWR(`/api/team/name/${name}`, fakeFetcher);
 
   if (!name) {
     return;
   }
 
-  if (!member) {
-    return;
-  }
-
   return (
     <>
-      <h1>Hello {member.name}</h1>
+      <h1>Hello {member?.name}</h1>
       <span role='img' aria-label='favourite emoji'>
-        Coach favourite is: {member.favorite}
+        Coach favourite is: {member?.favorite}
       </span>
     </>
   );
