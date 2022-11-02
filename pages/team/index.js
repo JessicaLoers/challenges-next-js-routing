@@ -1,22 +1,28 @@
 import Link from 'next/link';
 import useSWR from 'swr';
-import { getAllTeamMembers, fetcher } from '../../util/helpers';
+import { getAllTeamMembers } from '../../util/helpers';
 
 export default function Team() {
-  //const coachies = getAllTeamMembers();
-
-  const { data, error } = useSWR('/team', fetcher);
-
-  if (error) {
-    console.dir(error);
-    return 'nope, not working';
+  function fakeFetcher() {
+    return getAllTeamMembers();
   }
 
+  const { data, error } = useSWR('/team', fakeFetcher);
+  const coachies = data;
+
+  if (error) {
+    return (
+      <>
+        <h1>Team content here</h1>
+        <p>There is something wrong</p>
+      </>
+    );
+  }
   if (!data) {
     return (
       <>
         <h1>Team content here</h1>
-        <h2>Still loading ... </h2>
+        <p>Loading... </p>
       </>
     );
   }
@@ -25,7 +31,7 @@ export default function Team() {
     <>
       <h1>Team content here</h1>
       <ul>
-        {data?.map((coach) => {
+        {coachies?.map((coach) => {
           return (
             <li key={coach.name}>
               <Link href={`/team/${coach.name}`}>{coach.name}</Link>
