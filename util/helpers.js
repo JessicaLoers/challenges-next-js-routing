@@ -24,5 +24,9 @@ function getMemberByName(name) {
   return member;
 }
 
+function fetcher(url) {
+  return fetch(url).then((resolve) => resolve.json);
+}
+
 export default coachies;
-export { getAllTeamMembers, getMemberByName };
+export { getAllTeamMembers, getMemberByName, fetcher };

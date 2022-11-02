@@ -6,11 +6,6 @@ export default function MemberDetail() {
 
   const member = getMemberByName(name);
 
-  /*  const member = coachies.find((coach) => {
-    return coach.name === name;
-  });
- */
-  // voll süß
   if (!name) {
     return;
   }
