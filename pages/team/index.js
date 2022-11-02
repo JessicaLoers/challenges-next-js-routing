@@ -3,8 +3,6 @@ import useSWR from 'swr';
 import { getAllTeamMembers } from '../../util/helpers';
 
 export default function Team() {
-  //const coachies = getAllTeamMembers();
-
   function fakeFetcher() {
     return getAllTeamMembers();
   }
@@ -40,12 +38,6 @@ export default function Team() {
             </li>
           );
         })}
-        {/* <li>
-          <Link href='/team/jessica'>Jessica</Link>
-        </li>
-        <li>
-          <Link href='/team/michael'>Michael</Link>
-        </li> */}
       </ul>
     </>
   );
